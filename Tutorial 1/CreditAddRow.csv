@@ -1,0 +1,3 @@
+UserID,UserIncome,UserLimit,Rating,Cards,Age,Education,Gender,Student,Married,Ethnicity,Balance,AppDate,Default
+11,63.095,8117,589,4,30,14, Male,No,Yes,Caucasian,1407,2003/4/19,FALSE
+12,15.045,1311,138,3,64,16, Male,No,No,Caucasian,0,2014/5/30,TRUE
