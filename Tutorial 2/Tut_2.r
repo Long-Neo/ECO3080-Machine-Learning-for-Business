@@ -7,7 +7,7 @@
 # usually, we want to train our models on a subset of data (training set)
 # and test them on another subset of data (test set/ prediction set)
 # Set work path
-setwd("D:/LongMa/Machine Learning in R/Tutorial_2")
+setwd("YourPathHere")
 # import csv data by read.table()
 credit_data <- read.table("Credit (All).csv", header = TRUE,
                  sep = ",", stringsAsFactors = FALSE)
@@ -104,6 +104,15 @@ barplot(counts_1,
         main = "Ethnicity of users",
         xlab = "Ethnicity", ylab = "Frequency",
         horiz = FALSE)
+
+## ggplot2 version
+install.packages("ggplot2")
+library(ggplot2)
+
+ggplot(data = credit_data, mapping = aes(x = Ethnicity)) +  
+  geom_bar(color = "red", fill = "yellow")
+#use + to separate each layer
+
 ### Example 2: frequency of ethnicity (with gender information)
 counts_2 <- table(credit_data$Gender, credit_data$Ethnicity)
 counts_2
@@ -115,12 +124,26 @@ barplot(counts_2,
         col = c("yellow", "grey"), beside = FALSE)
 legend("topleft", inset = 0.05, title = "Gender", c("Male", "Female"),
        pch = c(15, 15), col = c("yellow", "grey"))
+
+## ggplot2 version
+ggplot(data = credit_data, mapping = aes(x = Ethnicity, fill = Gender)) +
+  geom_bar(position = "stack") + labs(title = "Ethnicity & Gender")
+
 ### Example 3: mean bar chart
 attach(credit_data)
 m1 <- aggregate(Income, by = list(Ethnicity), FUN = mean)
-barplot(means$x, names.arg = means$Group.1)
+barplot(m1$x, names.arg = m1$Group.1)
 title("Mean income of each ethnicity", 
       xlab = "Ethnicity", ylab = "Mean Income")
+detach(credit_data)
+
+## ggplot2 version
+attach(credit_data)
+m1 <- aggregate(Income, by = list(Ethnicity), FUN = mean)
+names(m1)[1] <- "Ethnicity"
+names(m1)[2] <- "Mean_Income"
+ggplot(data = m1, mapping = aes(x = Ethnicity, y = Mean_Income)) + 
+  geom_col() + labs(title = "Mean income of each ethnicity")
 detach(credit_data)
 
 ################# (2) Pie chart
@@ -128,6 +151,27 @@ counts_1 <- table(credit_data$Ethnicity)
 pct <- round(counts_1/sum(counts_1)*100)
 lbls <- paste(names(counts_1), " ", pct, "%", sep = "") 
 pie(counts_1, labels = lbls,  main = "Ethnicity of users")
+
+## ggplot2 version
+blank_theme <- theme_minimal() +
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank(),
+    panel.border = element_blank(),
+    panel.grid = element_blank(),
+    axis.ticks = element_blank(),
+    plot.title = element_text(size = 14, face = "bold")
+  )
+tsample <- 12
+ggplot(data = credit_data, mapping = aes(x = "Ethnicity", fill = Ethnicity)) +
+  geom_bar(stat = "count", width = 0.5, position = 'stack', size = 6) +
+  coord_polar("y", start = 0) +
+  scale_fill_manual(values = c("#999999", "#E69F00", "#56B4E9"))+
+  blank_theme +
+  geom_text(stat = "count", aes(label = scales::percent(..count../tsample)), 
+            size = 4, position = position_stack(vjust = 0.5))
 
 ################# (3) Histograms
 par(mfrow = c(2, 2))
@@ -167,6 +211,27 @@ yfit <- yfit*diff(h$mids[1:2])*length(x)
 lines(xfit, yfit, col = "blue", lwd = 2)
 box()
 
+## ggplot2 version
+x2 <- credit_data$Age
+p1 <- ggplot(data = credit_data, mapping = aes(x = Income)) + 
+  geom_histogram(binwidth = 20) 
+p2 <- ggplot(data = credit_data, mapping = aes(x = Limit)) + 
+  geom_histogram(binwidth = 1000) 
+p3 <- ggplot() + 
+  geom_histogram(data = credit_data, mapping = aes(x = Rating, y = ..density..),
+                 binwidth = 100) +
+  geom_density(data = credit_data, mapping = aes(Rating)) 
+p4 <- ggplot() + 
+  geom_histogram(data = credit_data, mapping = aes(Age), binwidth = 10) + 
+  stat_function(fun = function(x) 
+    dnorm(x, mean = mean(x2), sd = sd(x2)) * nrow(credit_data), 
+    color = "darkred", size = 1)
+# the 4 plots here are not exactly the same as before  
+
+install.packages("gridExtra")
+library(gridExtra)
+grid.arrange(p1, p2, p3, p4, ncol = 2)
+
 ################# (4) Box Plots and Violin Plots
 # box plots
 par(mfrow = c(1, 1))
@@ -178,6 +243,10 @@ boxplot(Income ~ Gender, data = credit_data,
         xlab = "gender",
         ylab = "income")
 
+## ggplot2 version
+ggplot(data = credit_data, aes(x = Gender, y = Income)) + 
+  geom_boxplot()
+
 # violin plots
 install.packages("vioplot")
 library(vioplot)
@@ -186,6 +255,11 @@ x2 <- credit_data$Rating[credit_data$Gender == "Female"]
 par(mfrow = c(1, 1))
 vioplot(x1, x2, names = c("Male", "Female"), col = "gold")
 title("Violin Plots", ylab = "rating", xlab = "gender")
+
+## ggplot2 version
+ggplot(data = credit_data, aes(x = Gender, y = Rating)) + 
+  geom_violin(fill = "lightblue") +
+  geom_boxplot(fill = "lightgreen", width = 0.2)
 
 ################# (5) Scatter plots and Line charts
 # Scatter plots
@@ -196,6 +270,12 @@ plot(Income, Rating,
 abline(lm(Rating ~ Income), col = "red", lwd = 2, lty = 1)
 lines(lowess(Income, Rating), col = "blue", lwd = 2, lty = 2)
 detach(credit_data)
+
+## ggplot2 version
+ggplot(data = credit_data, aes(x = Income, y = Rating)) + 
+  geom_point(pch = 17, color = "blue", size = 2) + 
+  geom_smooth(method = lm, formula = y ~ x, color = "red", linetype = 2) +
+  labs(title = "Credit Data", x = "Income", y = "Rating") 
 
 # Line charts (use orange tree data) time series data
 Orange < - Orange
@@ -230,6 +310,8 @@ legend(xrange[1], yrange[2], 1:ntrees,
        lty = linetype,
        title = "Tree"
 )
+
+# I will not provide ggplot2 version of this example. 
 # please read Chapter 3/6/11 to learn more methods of drawing graphs
 # if you want to have more beautiful plots and charts
 # read Chapter 19 to learn how to use ggplot2 (which is very nice package)
@@ -239,8 +321,7 @@ legend(xrange[1], yrange[2], 1:ntrees,
 install.packages("maps")
 install.packages("mapproj")
 install.packages("rgdal")
-install.packages("ggplot2")
-library(ggplot2)
+
 library(rgdal)
 library(maps)
 library(mapproj)
