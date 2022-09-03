@@ -3,7 +3,29 @@
 ################# Reference： R in action (Second edition) #####################
 ################################################################################
 
-#######################    1.1 Data structure in R   ###########################
+
+#######################    1.0 Very Basic Command in R   #######################
+
+###### Getting Help in R
+help("lm")
+
+###### Setting your workspace
+getwd() # lists the current working directory
+setwd("C:/Users/NEOMA/Desktop") # changes the current directory to Desktop
+# Notice that we ought to use "/" rather than "\"
+
+###### Removing (deleting) one or more objects
+x <- 1
+rm(x)
+
+###### Packages in R
+install.packages("ggplot2") # install packages in R
+library(ggplot2) # before you use this package, you need to load it 
+update.packages("ggplot2") # update the packages that you've installed
+
+# For further information, you could refer to Chap1 of "R in Action (2nd)"
+
+#######################    1.1 Data Structure in R   ###########################
 
 ###### Vector: can store numbers, strings and logit (Same type)
 vector_a <- c(1, 2, 5, 6, -2)
@@ -113,9 +135,9 @@ print(mylist)
 print(mylist[[1]])
 print(mylist[["my_contents1"]])
 
-############  1.2 Import data From outside and do something we like ###########
+############  1.2 Import data From outside and do something we like ############
 # Set work path
-setwd("D:/LongMa/Machine Learning in R/Tutorial_1")
+setwd("F:/5_PhD_in_Economics_CUHKSZ/2_Teaching/ECO3080_Machine_Learning_for_Business/Tutorial_1")
 # import csv data by read.table()
 credit_data <- read.table("RawCredit.csv", header = TRUE,
                  sep = ",", stringsAsFactors = FALSE)
@@ -173,7 +195,7 @@ credit_data_final$Rating[credit_data_final$Rating >= 500] <- "Good"
 credit_data_final$Rating[credit_data_final$Rating < 500 &
                          credit_data_final$Rating > 200] <- "Medium"
 credit_data_final$Rating[credit_data_final$Rating <= 200] <- "Bad"
-# Logical operaters in R:
+# Logical operators in R:
 # "&" = "and" , "|" = "or", "!" = "not", ...(check by yourselves)
 
 ########### (6) Sort you data
@@ -181,7 +203,7 @@ credit_data_sort <- credit_data_final[order(credit_data_final$UserIncome), ]
 credit_data_sort2 <- credit_data_final[order(-credit_data_final$UserIncome), ]
 
 ########### (7) Reshape your Dataframe by "reshape2" (some basic idea)
-# install.packages("reshape2")
+install.packages("reshape2")
 library(reshape2)
 # from credit_data_final, extract a subset of data
 myvariable <- c("UserID", "UserIncome", "UserLimit", "AppDate")
@@ -205,8 +227,8 @@ credit_after_cast_3 <- dcast(credit_after_melt, UserID ~ variable, mean)
 # you can do a lot of things to your data using reshape2
 # please check by yourselves
 
-############                    1.3 Functions                      ###########
-##############################################################################
+############                    1.3 Functions                      #############
+################################################################################
 
 # Some basic function for math and statistics
 x <- 4.125
@@ -237,6 +259,20 @@ print(max(y)) # maximum of y
 # scaling your data (standardization) examples:
 z <- c(1, 2, 3, 4, 5, 6, 7, 8)
 new_z <- scale(z, center = TRUE, scale = TRUE)
+
+# Some useful functions
+
+rep(1:2, 5) # replicate 1 to 2 five times
+runif(5, min = 0, max = 1) # randomly generate five numbers from U[0,1]
+# generate a uniform distribution 
+x <- pretty(c(-3,3), 30)
+y1 <- dunif(x, min = -2, max = 1) 
+plot(x, y1)
+y2 <- punif(x, min = -2, max = 1) 
+plot(x, y2)
+# if you want to get the same result repeatedly, then set a random seed
+set.seed(12345)
+runif(5, min = 0, max = 1)
 
 # for / while / if else
 # (1) "for" loop
