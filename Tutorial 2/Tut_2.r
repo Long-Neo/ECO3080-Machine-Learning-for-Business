@@ -7,7 +7,7 @@
 # usually, we want to train our models on a subset of data (training set)
 # and test them on another subset of data (test set/ prediction set)
 # Set work path
-setwd("YourPathHere")
+setwd("F:/5_PhD_in_Economics_CUHKSZ/2_Teaching/ECO3080_Machine_Learning_for_Business/Tutorial_2")
 # import csv data by read.table()
 credit_data <- read.table("Credit (All).csv", header = TRUE,
                  sep = ",", stringsAsFactors = FALSE)
@@ -64,6 +64,14 @@ describe(credit_data[myvars])
 library(psych)
 describeBy(credit_data[myvars], list(gender = credit_data$Gender))
 
+# A very nice package to help us generate a pretty table for summary statistics
+# either in html or in latex
+install.packages("stargazer")
+library(stargazer)
+library(MASS)
+stargazer(Boston, font.size = "scriptsize", type = "html") # the data set named Boston
+# this package can also export the well-structured table for regressions 
+
 #####    1.2.2 For categorical variables (Frequency and contingency tables)
 # (1) one dimension
 table1 <- table(credit_data$Ethnicity)
@@ -93,6 +101,9 @@ corrgram(credit_data[vars2], order = TRUE, lower.panel = panel.shade,
          upper.panel = panel.pie, text.panel = panel.txt,
          main = "Corrgram of credit data")
 # check them by yourselves
+
+##### 1.2.4 T-test
+t.test(Rating ~ Married, credit_data)
 
 #################    1.3 Draw graphs, charts and maps    #######################
 
