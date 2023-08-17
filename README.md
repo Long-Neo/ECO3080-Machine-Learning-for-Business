@@ -1,4 +1,4 @@
-# Machine-Learning-in-R
+# ECO3080 Machine Learning for Business
 ## Introduction
 This is the coding session for ECO3080 Machine Learning for Business. Folders "Tutorial 1"-"Tutorial 8" include R files, slides and supplementary data for classes in 2022-2023 Term 1. Textbook and reference book are also attached in the main folder.
 ## New materials for classes in 2023-2024 Term 1
