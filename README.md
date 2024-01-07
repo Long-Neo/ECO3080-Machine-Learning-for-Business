@@ -12,7 +12,7 @@ This is the coding session for ECO3080 Machine Learning for Business.
 * Introductory Deep Learning
 
 ## For 2023-2024 Term 1
-According to the feedback from students in 2022-2023, I rewrite the materials for 2023-2024 Term 1. The contents are simplified and all compiled in only one pdf file including 5 chapters:
+According to the feedback from students in 2022-2023, I rewrite the materials for 2023-2024 Term 1. The contents are simplified and all compiled in only one PDF file which includes 5 chapters:
 * Starting with R
 * Basic Classification Methods
 * Introduction to Model Selection
