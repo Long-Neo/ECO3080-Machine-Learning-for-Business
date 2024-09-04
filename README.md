@@ -22,7 +22,7 @@ According to the feedback from students in 2022-2023, I rewrite the materials fo
 Students are highly encouraged to type the codes by themselves rather than copying mine so that they can quickly get familiar with R. But those who have difficulties in learning R coding can still refer to the old version of my tutorials. 
 
 ## For 2024-2025 Term 1
-Students in 2024-2025 term 1 are required to learn Python instead of R as an accompanying programming language. Thus, I directly borrow the materials (especially Jupytor notebook files) from ISLP for the tutorial sessions. Students can access ISLP (www.statlearning.com/resources-python) for data and can access the Lab (www.github.com/intro-stat-learning/ISLP_labs/tree/stable) for sample codes and instructions. The following topics are covered:
+Students in 2024-2025 term 1 are required to learn Python instead of R as an accompanying programming language. Thus, I directly borrow the materials (especially Jupytor notebook files) from ISLP for the tutorial sessions. Students can access ISLP (www.statlearning.com/resources-python) for data, sample codes, and other instructions. The following topics are covered:
 * Introduction to Python
 * Linear Regression
 * Classification
