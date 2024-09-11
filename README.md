@@ -23,13 +23,14 @@ Students are highly encouraged to type the codes by themselves rather than copyi
 
 ## For 2024-2025 Term 1
 Students in 2024-2025 term 1 are required to learn Python instead of R as an accompanying programming language. Thus, I directly borrow the materials (especially Jupytor notebook files) from ISLP for the tutorial sessions. Students can access ISLP (www.statlearning.com/resources-python) for data, sample codes, and other instructions. The following topics are covered:
-* Introduction to Python
-* Linear Regression
-* Classification
-* Resampling Methods
-* Linear Model Selection and Regularization
-* Moving Beyond Linearity
-* Tree-based Methods
-* Deep Learning
-* Survival Analysis
-* Unsupervised Learning
+* **Introduction to Python**
+  * Students should know some basic commands in Python and be familiar with different data types (especially lists, tuples, and strings); they should know how to load a dataframe and manage it as well (e.g., selecting rows and columns, dealing with missing values, ...); they are also supposed to generate proper graphs (or tables) for different types of variables (e.g., quantitative or qualitative).
+* **Linear Regression**
+* **Classification**
+* **Resampling Methods**
+* **Linear Model Selection and Regularization**
+* **Moving Beyond Linearity**
+* **Tree-based Methods**
+* **Deep Learning**
+* **Survival Analysis**
+* **Unsupervised Learning**
