@@ -26,6 +26,7 @@ Students in 2024-2025 term 1 are required to learn Python instead of R as an acc
 * **Introduction to Python**
   * Students should know some basic commands in Python and be familiar with different data types (especially lists, tuples, and strings); they should know how to load a dataframe and manage it as well (e.g., selecting rows and columns, dealing with missing values, ...); they are also supposed to generate proper graphs (or tables) for different types of variables (e.g., quantitative or qualitative).
 * **Linear Regression**
+  * Students should know how to load data from outside; they need to clearly set up a linear regression model by `pd.DataFrame()` or `MS()` from ISLP, together with `sm.OLS`; they are also supposed to use `.fit()` to  estimate the parameters and use `.get_prediction()` to make predictions based on new observed features. Diagnostic analysis is not required. 
 * **Classification**
 * **Resampling Methods**
 * **Linear Model Selection and Regularization**
