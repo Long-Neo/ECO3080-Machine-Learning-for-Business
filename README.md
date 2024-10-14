@@ -25,7 +25,7 @@ According to the feedback from students in 2022-2023 Fall, I rewrite the materia
 * Chapter 4: Basic Tree-based Methods
 * Chapter 5: Introduction to Deep Learning
 
-*Students are highly encouraged to type the codes by themselves rather than copying mine so that they can quickly get familiar with R. But those who have difficulties in learning R coding can still refer to the old version of my tutorials.* 
+*Students are highly encouraged to type the codes by themselves rather than copying mine so that they can quickly get familiar with R. But those who have difficulties can still refer to the old version of my tutorials.* 
 
 ## 2022-2023 Fall
 Files with name "Tutorial 1"-"Tutorial 8" include R scripts, slides and supplementary data, covering topics:
