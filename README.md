@@ -10,9 +10,7 @@ Students in 2024-2025 Fall are required to learn Python instead of R as an accom
 * **Tutorial 5: Linear Model Selection and Regularization**
 * **Tutorial 6: Moving Beyond Linearity**
 * **Tutorial 7: Tree-based Methods**
-* **Tutorial 8: Deep Learning**
-* **Tutorial 9: Survival Analysis**
-* **Tutorial 10: Unsupervised Learning**
+* **Tutorial 8: Deep Learning and Unsupervised Learning**
 
 ## 2023-2024 Fall
 According to the feedback from students in 2022-2023 Fall, I rewrite the materials for 2023-2024 Fall. The contents are simplified and all compiled in only one PDF file which includes 5 chapters:
